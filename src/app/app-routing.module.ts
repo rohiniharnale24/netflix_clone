@@ -1,10 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { MoviedashboardComponent } from './shared/component/moviedashboard/moviedashboard.component';
+import { MoviedetailComponent } from './shared/component/moviedetail/moviedetail.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path: '',
+    component: MoviedashboardComponent,
+  },
+  {
+    path: 'details/:movieId',
+    component: MoviedetailComponent,
+  },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
