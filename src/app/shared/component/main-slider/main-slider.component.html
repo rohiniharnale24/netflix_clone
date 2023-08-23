@@ -3,11 +3,15 @@
     <ng-container *ngFor="let movie of moviesArray">
       <ng-template carouselSlide>
         <figure class="item">
-          <img
-            src="https://image.tmdb.org/t/p/original/{{ movie.backdrop_path }}"
-            alt="movie"
-            title="movie"
-          />
+          <div [routerLink]="['movieDetail', movie.id]">
+            <img
+              src="https://image.tmdb.org/t/p/original/{{
+                movie.backdrop_path
+              }}"
+              alt="movie"
+              title="movie"
+            />
+          </div>
           <figcaption>
             <h3>{{ movie.title }}</h3>
           </figcaption>
@@ -16,4 +20,12 @@
     </ng-container>
   </owl-carousel-o>
 </div>
-{{ moviesArray | json }}
+<!-- {{ moviesArray | json }} -->
+
+<!-- <owl-carousel-o [options]="customOptions">
+  <ng-template carouselSlide>Slide 1</ng-template>
+  <ng-template carouselSlide>Slide 2</ng-template>
+  <ng-template carouselSlide>Slide 3</ng-template>
+</owl-carousel-o> -->
+<!-- //https://image.tmdb.org/t/p/w1280 >> for low resolution original >> is for high
+resolution -->

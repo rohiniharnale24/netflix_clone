@@ -1,9 +1,10 @@
 ::ng-deep {
   .mainSlider {
     .owl-carousel .owl-item img {
+      cursor: pointer;
       display: block;
       width: 100%;
-      height: 100%;
+      height: calc(100vh - 90px);
       object-fit: cover;
     }
     .owl-nav.ng-star-inserted {
@@ -11,9 +12,15 @@
       top: 50%;
       left: 0;
       width: 100%;
-      border: 2px solid red;
       display: flex;
       justify-content: space-between;
     }
+  }
+  figure.item.ng-star-inserted h3 {
+    position: absolute;
+    top: 30%;
+    color: white;
+    font-size: 50px;
+    text-shadow: 10px 12px 20px #000;
   }
 }

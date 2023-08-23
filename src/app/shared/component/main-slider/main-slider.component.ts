@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { MovieApiService } from '../../service/movie-api.service';
 import { Results, RootObject } from '../../model/movieArray';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-main-slider',
@@ -26,18 +27,21 @@ export class MainSliderComponent implements OnInit {
         items: 1,
       },
       400: {
-        items: 2,
+        items: 1,
       },
       740: {
-        items: 4,
+        items: 1,
       },
       940: {
-        items: 3,
+        items: 1,
       },
     },
     nav: true,
   };
-  constructor(private _movies: MovieApiService) {}
+  constructor(
+    private _movies: MovieApiService,
+    private _route: ActivatedRoute
+  ) {}
   ngOnInit(): void {
     this._movies.getTredingMovies().subscribe((res) => {
       console.log(res);
