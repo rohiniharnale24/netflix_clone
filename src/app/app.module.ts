@@ -10,6 +10,10 @@ import { RouterModule } from '@angular/router';
 import { MoviedashboardComponent } from './shared/component/moviedashboard/moviedashboard.component';
 import { NavbarComponent } from './shared/component/navbar/navbar.component';
 import { MoviedetailComponent } from './shared/component/moviedetail/moviedetail.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MovienameComponent } from './moviename/moviename.component';
+import { MovievideoComponent } from './movievideo/movievideo.component';
+import { MoviephotosComponent } from './moviephotos/moviephotos.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +22,9 @@ import { MoviedetailComponent } from './shared/component/moviedetail/moviedetail
     MoviedashboardComponent,
     NavbarComponent,
     MoviedetailComponent,
+    MovienameComponent,
+    MovievideoComponent,
+    MoviephotosComponent,
   ],
   imports: [
     BrowserModule,
@@ -26,6 +33,7 @@ import { MoviedetailComponent } from './shared/component/moviedetail/moviedetail
     CarouselModule,
     HttpClientModule,
     RouterModule,
+    MatTabsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

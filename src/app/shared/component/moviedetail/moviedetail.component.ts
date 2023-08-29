@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { MovieApiService } from '../../service/movie-api.service';
-import { Results } from '../../model/movieArray';
+import { Itrailer, Results } from '../../model/movieArray';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-moviedetail',
@@ -10,10 +11,13 @@ import { Results } from '../../model/movieArray';
 })
 export class MoviedetailComponent implements OnInit {
   movieId!: string;
+  trailerUrl!: SafeResourceUrl;
   singleMovieDetails!: Results;
+  movieTrailerArray: Itrailer[] = [];
   constructor(
     private route: ActivatedRoute,
-    private _movieObj: MovieApiService
+    private _movieObj: MovieApiService,
+    private _sanitizer: DomSanitizer
   ) {}
 
   ngOnInit(): void {
@@ -25,7 +29,15 @@ export class MoviedetailComponent implements OnInit {
           console.log(res);
           this.singleMovieDetails = res;
         });
+        this._movieObj.getMovieTrailer(this.movieId).subscribe((trailer) => {
+          console.log('trailers', trailer);
+          this.movieTrailerArray = trailer;
+        });
       }
     });
+  }
+  movieTrailer(key: string) {
+    let url = `https://www.youtube.com/embed/${key}`;
+    this.trailerUrl = this._sanitizer.bypassSecurityTrustResourceUrl(url);
   }
 }

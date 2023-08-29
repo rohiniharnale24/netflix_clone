@@ -1,9 +1,59 @@
-<div class="banner" *ngIf="singleMovieDetails">
-  <!-- <img
-    src="https://image.tmdb.org/t/p/original/{{
-      singleMovieDetails.poster_path
-    }}"
-    alt="singleMovie"
-    title="singleMovie"
-  /> -->
+<!-- backgrounf Imaige -->
+<div
+  class="banner"
+  *ngIf="singleMovieDetails"
+  [style.backgroundImage]="
+    'linear-gradient(90deg,black 20%,transparent),url(https://image.tmdb.org/t/p/original/' +
+    singleMovieDetails.poster_path +
+    ')'
+  "
+>
+  <!-- caption for backgroundImage -->
+  <div class="caption">
+    <h3>
+      {{ singleMovieDetails.title || singleMovieDetails.original_title }}
+    </h3>
+  </div>
+</div>
+
+<!-- 
+<div class="tailer py-4">
+  <div class="container"*ngFor="let trailer of movieTrailerArray">
+    <div class="row">
+      <div class="col-sm-6" >
+        <p class="alert alert-primary" (click)="movieTrailer(trailer.key)">
+          {{ trailer.name }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div> -->
+<!-- video Section -->
+<div class="tailer py-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <mat-tab-group>
+          <mat-tab label="Overview">{{ movieTrailerArray[1].name }} </mat-tab>
+          <mat-tab label="Videos">
+            <div class="trailer-container" *ngIf="trailerUrl">
+              <button class="btn btn-danger closeBtn" (click)="trailerUrl = ''">
+                close
+              </button>
+              <iframe
+                width="560"
+                height="315"
+                [src]="trailerUrl"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </mat-tab>
+          <mat-tab label="Photos"> </mat-tab>
+        </mat-tab-group>
+      </div>
+    </div>
+  </div>
 </div>
