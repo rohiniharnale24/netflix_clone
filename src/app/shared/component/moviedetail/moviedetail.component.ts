@@ -11,7 +11,8 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 })
 export class MoviedetailComponent implements OnInit {
   movieId!: string;
-  trailerUrl!: SafeResourceUrl;
+  // trailerUrl!: SafeResourceUrl;
+  videoUrl!: string;
   singleMovieDetails!: Results;
   movieTrailerArray: Itrailer[] = [];
   constructor(
@@ -36,8 +37,8 @@ export class MoviedetailComponent implements OnInit {
       }
     });
   }
-  movieTrailer(key: string) {
-    let url = `https://www.youtube.com/embed/${key}`;
-    this.trailerUrl = this._sanitizer.bypassSecurityTrustResourceUrl(url);
-  }
+  // movieTrailer(key: string) {
+
+  //   this.trailerUrl = this._sanitizer.bypassSecurityTrustResourceUrl(url);
+  // }
 }
